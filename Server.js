@@ -2,31 +2,20 @@ import express from 'express';
 import connectdb from './config/db.js';
 import dotenv from 'dotenv';
 
-const app = express()
-let port = process.env.port;
+dotenv.config();
 
-dotenv.config()
+const app = express();
 
-connectdb()
+const port = process.env.PORT || 5000;
 
-app.listen(port,()=>console.log("server started"))
-
-app.get('/',(req,res)=>{
-    console.log(req)
-    res.send("hello world")
-})
+app.get('/', (req, res) => {
+    console.log(req);
+    res.send("hello world");
+});
 
 
+connectdb();
 
-
-
-
-
-
-
-
-
-
-
-
-
+app.listen(port, () => {
+    console.log(`Server connected : http://localhost:${port}`);
+});
