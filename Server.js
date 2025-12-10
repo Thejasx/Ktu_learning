@@ -1,6 +1,7 @@
 import express from 'express';
 import connectdb from './config/db.js';
 import dotenv from 'dotenv';
+import KtuUser from './models/ktumodels.js';
 
 dotenv.config();
 
@@ -16,10 +17,16 @@ app.get('/', (req, res) => {
     res.send("hello world");
 });
 
-app.post('/create', (req, res) => {
-    console.log(req.body)
-    res.send("data created")
-})
+app.post('/create', async(req, res) => {
+    let {email,password} = req.body
+
+    let data = await KtuUser.create({
+        email,
+        password
+
+    })
+    res.send(data);
+});
 
 
 connectdb();
