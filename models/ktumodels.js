@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 
+// Defining the schema for KTU users
+
 const ktuSchema = mongoose.Schema({
     email : {
         type : String,
@@ -15,6 +17,8 @@ const ktuSchema = mongoose.Schema({
     }
 })
 
+
+// Creating the model from the schema
 const KtuUser = mongoose.model('KtuUser', ktuSchema);
 
 export default KtuUser;
